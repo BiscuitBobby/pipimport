@@ -10,17 +10,18 @@ def read(fname):
 
 setup(
     name = "pipimport",
-    version = "0.2.5",
-    author = "Carles F. Julia",
-    author_email = "carles@fjulia.name",
-    description = "Automatically install missing modules using pip at import time. Best used with virtualenv.",
+    version = "0.2.6",
+    author = "BiscuitBobby",
+    author_email = "simeddon@gmail.com",
+    description = "Automatically install missing modules using pip at import time. Best used with virtualenv. Updated fork of original by Carles F. Julia.",
     license = "MIT",
     keywords = "pip virtualenv import hook",
-    url = "https://github.com/chaosct/pipimport",
+    url = "https://github.com/BiscuitBobby/pipimport",
     packages=['pipimport'],
     long_description=read('README'),
     classifiers=[
         "Development Status :: 3 - Alpha",
+        "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries",
         "Topic :: System :: Software Distribution",
         "License :: OSI Approved :: MIT License",
