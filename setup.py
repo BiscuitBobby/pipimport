@@ -9,7 +9,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "pipimport",
+    name = "pipimport3",
     version = "0.2.6",
     author = "BiscuitBobby",
     author_email = "simeddon@gmail.com",
