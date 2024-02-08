@@ -7,7 +7,7 @@ It is best used with virtualenv.
 
 Just import pipimport and call install():
 
->>> import pipimport
+import pipimport
 >>> pipimport.install()
 
 Now you can import missing modules and they will be downloaded and installed by pip.
@@ -20,12 +20,6 @@ import os.path
 import subprocess
 import site
 import atexit
-import os.path
-
-try:
-    import __builtin__
-except ImportError:
-    import builtins as __builtin__
 
 _pip_bin = os.path.join(sys.prefix, 'bin', 'pip')
 _ignore_list_f = [os.path.join(s, ".pipimport-ignore")
@@ -50,7 +44,7 @@ def _pip_install(name):
     try:
         subprocess.check_call([_pip_bin, "install", name])
     except subprocess.CalledProcessError:
-        raise PipInstallError()
+        raise PipInstallError
 
 
 def _rescan_path():
@@ -78,13 +72,13 @@ class ImportPipInstaller(object):
         except ImportError:
             pass
         if name in self.ignore:
-            raise ImportError()
+            raise ImportError
         print("Will install module {}".format(name))
         try:
             _pip_install(name)
         except PipInstallError:
             self.ignore.add(name)
-            raise ImportError()
+            raise ImportError
         _rescan_path()
         return self.realimport(name, *args, **kwargs)
 
@@ -97,14 +91,14 @@ class ImportPipInstaller(object):
 
 
 def install():
-    if isinstance(__builtin__.__import__, ImportPipInstaller):
+    if isinstance(__import__, ImportPipInstaller):
         return
     importreplacement = ImportPipInstaller()
-    __builtin__.__import__ = importreplacement
+    globals()['__import__'] = importreplacement
 
 
 @atexit.register
 def uninstall():
-    if isinstance(__builtin__.__import__, ImportPipInstaller):
+    if isinstance(__import__, ImportPipInstaller):
         __import__.saveignore()
-        __builtin__.__import__ = __import__.realimport
+        globals()['__import__'] = __import__.realimport
