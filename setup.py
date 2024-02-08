@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = "pipimport3",
-    version = "0.2.6",
+    version = "0.3.1",
     author = "BiscuitBobby",
     author_email = "simeddon@gmail.com",
     description = "Automatically install missing modules using pip at import time. Best used with virtualenv. Updated fork of original by Carles F. Julia.",
@@ -24,6 +24,5 @@ setup(
         "Programming Language :: Python :: 3",
         "Topic :: Software Development :: Libraries",
         "Topic :: System :: Software Distribution",
-        "License :: OSI Approved :: MIT License",
     ],
 )

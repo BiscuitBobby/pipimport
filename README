@@ -1,3 +1,5 @@
+Python3 compatible fork of original pipimport
+
 Pipimport automatically installs missing modules using pip at import time.
 It is best used with virtualenv.
 
